@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyPizzaStore</string>
+    <string name="price_format">$ %.2f</string>
+    <string name="total_format">Total:    $ %.2f</string>
+</resources>
