@@ -13,23 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.clerodri.mypizzastore.comida.Comida;
 
 public class OrderActivity extends AppCompatActivity {
     private TextView quantityText, totalLabel;
     private Button buttonIncrease, buttonDecrease;
-    private Comida comidaSelected;
+    private Product productSelected;
     private int quantity = 1; // Initial quantity
 
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // Closes the current activity and returns to the previous one
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +33,7 @@ public class OrderActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         // Initialize views
         quantityText = findViewById(R.id.quantity_text);
@@ -50,14 +42,14 @@ public class OrderActivity extends AppCompatActivity {
         buttonDecrease = findViewById(R.id.button_decrease);
 
 
-        comidaSelected = (Comida) getIntent().getSerializableExtra("comidaSelected");
+        productSelected = (Product) getIntent().getSerializableExtra("productSelected");
         TextView tvName =  findViewById(R.id.product_name);
         ImageView tvImg =  findViewById(R.id.product_image);
         TextView tvPrice =  findViewById(R.id.product_price);
-        assert comidaSelected != null;
-        tvName.setText(comidaSelected.getNombre());
-        tvImg.setImageResource(comidaSelected.getImagenId());
-        double price = comidaSelected.getPrice();
+        assert productSelected != null;
+        tvName.setText(productSelected.getName());
+        tvImg.setImageResource(productSelected.getImgId());
+        double price = productSelected.getPrice();
         tvPrice.setText(getString(R.string.price_format, price));
         updateTotalLabel();
 
@@ -84,7 +76,7 @@ public class OrderActivity extends AppCompatActivity {
     }
     private void updateTotalLabel() {
         // Calculate total and update label
-        float totalPrice = (float) (quantity * comidaSelected.getPrice());
+        float totalPrice = (float) (quantity * productSelected.getPrice());
         totalLabel.setText(getString(R.string.total_format, totalPrice));
     }
 
