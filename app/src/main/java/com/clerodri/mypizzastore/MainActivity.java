@@ -27,14 +27,18 @@ public class MainActivity extends AppCompatActivity {
         CardView store = findViewById(R.id.store);
 
         pizzas.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProductActivity.class);
-            intent.putExtra("productType", ProductType.PIZZA);
-            startActivity(intent);
-        });
+           Intent intent = new Intent(this, ComidaActivity.class);
+           startActivity(intent);
+       });
         drinks.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProductActivity.class);
-            intent.putExtra("productType", ProductType.BEBIDA);
+            Intent intent = new Intent(this, BebidaActivity.class);
             startActivity(intent);
+
+        });
+        store.setOnClickListener(v -> {
+            Intent intent = new Intent(this, FormActivity.class);
+            startActivity(intent);
+
         });
 
 

@@ -2,29 +2,22 @@ package com.clerodri.mypizzastore;
 
 import java.io.Serializable;
 
-public class Product  implements Serializable {
+public class Comida implements Serializable {
 
     private String name;
     private String message;
     private int imgId;
     private double price;
-    private ProductType productType;
 
-    public Product(String name, String message, int imgId, double price, ProductType productType) {
+
+    public Comida(String name, String message, int imgId, double price) {
         this.name = name;
         this.message = message;
         this.imgId = imgId;
         this.price = price;
-        this.productType = productType;
+
     }
 
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
 
     public String getName() {
         return name;

@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ProductAdapter extends BaseAdapter {
-    private List<Product> products;
+public class ComidaAdapter extends BaseAdapter {
+    private List<Comida> products;
     private LayoutInflater mInflater;
 
 
-    public ProductAdapter(List<Product> products, Context context) {
+    public ComidaAdapter(List<Comida> products, Context context) {
         this.products = products;
         this.mInflater = LayoutInflater.from(context);;
     }
@@ -29,7 +29,7 @@ public class ProductAdapter extends BaseAdapter {
     }
 
     @Override
-    public Product getItem(int i) {
+    public Comida getItem(int i) {
         return products.get(i);
     }
 
@@ -40,7 +40,7 @@ public class ProductAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup container) {
-        Product product = getItem(position);
+        Comida product = getItem(position);
         if (convertView == null) {
 
             convertView = mInflater.inflate(R.layout.item_comida, container, false);
@@ -54,6 +54,7 @@ public class ProductAdapter extends BaseAdapter {
         }
         convertView.setOnClickListener(v->{
             Intent intent = new Intent(mInflater.getContext(), OrderActivity.class);
+            intent.putExtra("type","FOOD");
             intent.putExtra("productSelected",product);
             mInflater.getContext().startActivity(intent);
         });
